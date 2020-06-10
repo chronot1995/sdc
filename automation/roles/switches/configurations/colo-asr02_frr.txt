@@ -7,6 +7,6 @@ log syslog informational
 line vty
 
 router bgp 393521
- bgp router-id 172.16.1.4
+ bgp router-id 172.16.1.6
  neighbor swp1 interface
  neighbor swp1 remote-as external

@@ -6,7 +6,7 @@ service integrated-vtysh-config
 log syslog informational
 line vty
 
-router bgp 22222
- bgp router-id 2.2.2.2
+router bgp 44444
+ bgp router-id 4.4.4.4
  neighbor swp1 interface
  neighbor swp1 remote-as external

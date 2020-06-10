@@ -6,6 +6,14 @@
       "Cumulus Linux version must be 3.7.11 or later.
       Version {{ansible_lsb.release}} detected"
 
+- name: Initial Switch Management VRF setup
+  nclu:
+    commit: true
+    description: "Initial Management VRF setup"
+    commands:
+      - add interface eth0 vrf mgmt
+      - add hostname "{{ ansible_hostname }}"
+
 - name: Copy FRR daemons file
   copy:
     src: daemons
@@ -25,7 +33,7 @@
     src: configurations/{{ansible_hostname}}_frr.txt
     dest: /etc/frr/frr.conf
     backup: yes
-  notify: reload frr
+  notify: restart frr
 
 - name: Flush Handlers, best practice
   meta: flush_handlers
