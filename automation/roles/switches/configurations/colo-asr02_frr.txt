@@ -4,9 +4,15 @@ hostname colo-asr02
 username cumulus nopassword
 service integrated-vtysh-config
 log syslog informational
-line vty
-
+interface swp3
+ ip ospf network point-to-point
+interface swp4
+ ip ospf network point-to-point
 router bgp 393521
  bgp router-id 172.16.1.6
- neighbor swp1 interface
- neighbor swp1 remote-as external
+ neighbor swp1 interface remote-as external
+ neighbor 172.16.1.5 remote-as internal
+router ospf
+ ospf router-id 172.16.1.6
+ network 172.16.1.6/32 area 0
+line vty
