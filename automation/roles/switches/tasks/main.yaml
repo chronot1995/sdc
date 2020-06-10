@@ -11,7 +11,7 @@
     commit: true
     description: "Initial Management VRF setup"
     commands:
-      - add interface eth0 vrf mgmt
+      - add vrf mgmt
       - add hostname "{{ ansible_hostname }}"
 
 - name: Copy FRR daemons file

@@ -11,3 +11,8 @@ source /etc/network/interfaces.d/*.cfg
 
 auto swp1
 iface swp1
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
