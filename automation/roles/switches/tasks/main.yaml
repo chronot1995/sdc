@@ -6,13 +6,14 @@
       "Cumulus Linux version must be 3.7.11 or later.
       Version {{ansible_lsb.release}} detected"
 
-# - name: Initial Switch Management VRF setup
-#   nclu:
-#     commit: true
-#     description: "Initial Management VRF setup"
-#     commands:
-#       - add vrf mgmt
-#       - add hostname "{{ ansible_hostname }}"
+#- name: Initial Switch Management VRF setup
+#  nclu:
+#    commit: true
+#    description: "Initial Management VRF setup"
+#    commands:
+#      - add vrf mgmt
+#      - add hostname "{{ ansible_hostname }}"
+#  notify: reload networking
 
 - name: Copy FRR daemons file
   copy:
