@@ -1,0 +1,7 @@
+frr version 4.0+cl3u17
+frr defaults datacenter
+hostname example1
+username cumulus nopassword
+service integrated-vtysh-config
+log syslog informational
+line vty
