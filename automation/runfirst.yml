@@ -1,0 +1,8 @@
+#####
+# Host config for sdc
+#####
+
+- hosts: switches
+  become: true
+  roles:
+  - setup
