@@ -33,7 +33,7 @@
     src: configurations/{{ansible_hostname}}_frr.txt
     dest: /etc/frr/frr.conf
     backup: yes
-  notify: restart frr
+  notify: reload frr
 
 - name: Flush Handlers, best practice
   meta: flush_handlers
