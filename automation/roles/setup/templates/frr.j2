@@ -1,6 +1,6 @@
 frr version 4.0+cl3u17
 frr defaults datacenter
-hostname colo-core2
+hostname {{ ansible_facts['nodename'] }}
 username cumulus nopassword
 service integrated-vtysh-config
 log syslog informational
