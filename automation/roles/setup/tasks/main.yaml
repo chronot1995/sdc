@@ -13,14 +13,14 @@
     backup: yes
 
 - name: Copy interfaces configuration
-  copy:
-    src: configurations/{{ansible_hostname}}_interfaces.txt
+  template:
+    src: interfaces.j2
     dest: /etc/network/interfaces
     backup: yes
 
 - name: Copy FRR configuration
-  copy:
-    src: configurations/{{ansible_hostname}}_frr.txt
+  template:
+    src: frr.j2
     dest: /etc/frr/frr.conf
     backup: yes
 
