@@ -8,7 +8,7 @@
 
 - name: Initial Switch Management VRF setup
   nclu:
-    commit: true
+    commit: false
     description: "Initial Management VRF setup"
     commands:
       - add vrf mgmt
