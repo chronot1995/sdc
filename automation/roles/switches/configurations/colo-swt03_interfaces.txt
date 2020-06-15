@@ -41,7 +41,7 @@ iface bond1
 auto bond2
 iface bond2
     bond-slaves swp11
-    bridge-vids 158
+    bridge-vids 160
     clag-id 2
 
 auto bond3
