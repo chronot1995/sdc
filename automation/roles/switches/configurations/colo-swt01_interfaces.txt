@@ -29,7 +29,50 @@ iface swp10
 auto swp11
 iface swp11
 
+auto bond1
+iface bond1
+    bond-slaves swp10
+    bridge-vids 136
+    clag-id 1
+
+auto bond2
+iface bond2
+    bond-slaves swp11
+    bridge-vids 144
+    clag-id 2
+
+auto bridge
+iface bridge
+    bridge-ports bond1 peerlink bond2
+    bridge-vids 136 144
+    bridge-vlan-aware yes
+
 auto mgmt
 iface mgmt
     address 127.0.0.1/8
     vrf-table auto
+
+auto peerlink
+iface peerlink
+    bond-slaves swp1 swp2
+
+auto peerlink.4094
+iface peerlink.4094
+    clagd-backup-ip 192.168.200.10 vrf mgmt
+    clagd-peer-ip linklocal
+    clagd-priority 100
+    clagd-sys-mac 44:38:39:FF:01:56
+
+auto vlan136
+iface vlan136
+    address 209.34.205.141/29
+    address-virtual 44:38:39:FF:00:01 209.34.205.142/29
+    vlan-id 136
+    vlan-raw-device bridge
+
+auto vlan144
+iface vlan144
+    address 209.34.205.149/29
+    address-virtual 44:38:39:FF:00:02 209.34.205.150/29
+    vlan-id 144
+    vlan-raw-device bridge
