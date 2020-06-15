@@ -9,8 +9,8 @@ interface swp3
 interface swp4
  ip ospf network point-to-point
 router ospf
- ospf router-id 172.16.1.10
- network 172.16.1.10/32 area 0
+ ospf router-id 172.16.1.12
+ network 172.16.1.12/32 area 0
  passive-interface vlan152
  passive-interface vlan160
  passive-interface vlan168
