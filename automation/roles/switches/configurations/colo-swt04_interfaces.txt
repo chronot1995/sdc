@@ -1,6 +1,6 @@
 auto lo
 iface lo inet loopback
-    address 172.16.1.12/32
+    address 172.16.1.9/32
 
 auto eth0
 iface eth0 inet dhcp
@@ -17,11 +17,11 @@ iface swp2
 
 auto swp3
 iface swp3
-    address 172.16.1.12/32
+    address 172.16.1.9/32
 
 auto swp4
 iface swp4
-    address 172.16.1.12/32
+    address 172.16.1.9/32
 
 auto swp10
 iface swp10
@@ -29,7 +29,66 @@ iface swp10
 auto swp11
 iface swp11
 
+auto swp12
+iface swp12
+
+auto bond1
+iface bond1
+    bond-slaves swp10
+    bridge-vids 152
+    clag-id 1
+
+auto bond2
+iface bond2
+    bond-slaves swp11
+    bridge-vids 158
+    clag-id 2
+
+auto bond3
+iface bond3
+    bond-slaves swp12
+    bridge-vids 168
+    clag-id 3
+
+auto bridge
+iface bridge
+    bridge-ports bond1 bond2 bond3 peerlink
+    bridge-vids 151 160 168
+    bridge-vlan-aware yes
+
 auto mgmt
 iface mgmt
     address 127.0.0.1/8
     vrf-table auto
+
+auto peerlink
+iface peerlink
+    bond-slaves swp1 swp2
+
+auto peerlink.4094
+iface peerlink.4094
+    clagd-backup-ip 192.168.200.11 vrf mgmt
+    clagd-peer-ip linklocal
+    clagd-priority 200
+    clagd-sys-mac 44:38:39:FF:01:56
+
+auto vlan152
+iface vlan152
+    address 209.34.205.156/29
+    address-virtual 44:38:39:FF:00:01 209.34.205.158/29
+    vlan-id 152
+    vlan-raw-device bridge
+
+auto vlan160
+iface vlan160
+    address 209.34.205.164/29
+    address-virtual 44:38:39:FF:00:02 209.34.205.166/29
+    vlan-id 160
+    vlan-raw-device bridge
+
+auto vlan168
+iface vlan168
+    address 209.34.205.172/29
+    address-virtual 44:38:39:FF:00:03 209.34.205.174/29
+    vlan-id 168
+    vlan-raw-device bridge

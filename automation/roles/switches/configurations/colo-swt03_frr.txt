@@ -4,12 +4,15 @@ hostname colo-swt03
 username cumulus nopassword
 service integrated-vtysh-config
 log syslog informational
-line vty
-
-router ospf
- ospf router-id 172.16.1.11
- network 172.16.1.11/32 area 0
 interface swp3
  ip ospf network point-to-point
 interface swp4
  ip ospf network point-to-point
+router ospf
+ ospf router-id 172.16.1.10
+ network 172.16.1.10/32 area 0
+ passive-interface vlan152
+ passive-interface vlan160
+ passive-interface vlan168
+ redistribute connected
+line vty

@@ -10,8 +10,6 @@ interface swp4
  ip ospf network point-to-point
 router ospf
  ospf router-id 172.16.1.9
- passive-interface bond1
- passive-interface bond2
  passive-interface vlan136
  passive-interface vlan144
  network 172.16.1.9/32 area 0
