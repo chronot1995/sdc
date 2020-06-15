@@ -4,9 +4,19 @@ hostname upn
 username cumulus nopassword
 service integrated-vtysh-config
 log syslog informational
-line vty
-
 router bgp 33333
  bgp router-id 3.3.3.3
- neighbor swp1 interface
- neighbor swp1 remote-as external
+ neighbor swp1 interface remote-as external
+ !
+ address-family ipv4 unicast
+  redistribute connected
+  redistribute static
+ exit-address-family
+ip prefix-list INTERNET_ROUTES seq 10 permit 0.0.0.0/0
+ip prefix-list INTERNET_ROUTES seq 20 permit 3.3.3.3/32
+route-map INTERNET-SIM permit 10
+ match ip address prefix-list INTERNET_ROUTES
+line vty
+
+ip route 3.3.3.0/24 Null0
+ip route 0.0.0.0/0 Null0

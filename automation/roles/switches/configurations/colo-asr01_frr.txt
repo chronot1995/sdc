@@ -12,7 +12,14 @@ router bgp 393521
  bgp router-id 172.16.1.5
  neighbor swp1 interface remote-as external
  neighbor 172.16.1.6 remote-as internal
+ address-family ipv4 unicast
+  redistribute static
+ exit-address-family
 router ospf
  ospf router-id 172.16.1.5
+ redistribute bgp
  network 172.16.1.5/32 area 0
 line vty
+
+ip route 172.16.1.0/24 Null0
+ip route 209.34.205.0/24 Null0

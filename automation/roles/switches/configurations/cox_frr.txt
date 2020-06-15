@@ -4,9 +4,13 @@ hostname cox
 username cumulus nopassword
 service integrated-vtysh-config
 log syslog informational
-line vty
-
 router bgp 44444
  bgp router-id 4.4.4.4
- neighbor swp1 interface
- neighbor swp1 remote-as external
+ neighbor swp1 interface remote-as external
+ address-family ipv4 unicast
+  redistribute static
+ exit-address-family
+line vty
+
+ip route 4.4.4.0/24 Null0
+ip route 0.0.0.0/0 Null0
