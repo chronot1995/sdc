@@ -53,7 +53,7 @@ iface bond3
 auto bridge
 iface bridge
     bridge-ports bond1 bond2 bond3 peerlink
-    bridge-vids 151 160 168
+    bridge-vids 152 160 168
     bridge-vlan-aware yes
 
 auto mgmt
