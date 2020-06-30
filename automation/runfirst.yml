@@ -5,4 +5,4 @@
 - hosts: switches
   become: true
   roles:
-  - setup
+  - switches
